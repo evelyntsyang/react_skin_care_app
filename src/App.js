@@ -23,6 +23,7 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [total, setTotal] = useState(0);
 
+  const baseUrl = "https://nodesj-skincare-app-backend.onrender.com"
   const handleAddToCart = (product) => {
     setCartItems([...cartItems, product]);
 
@@ -36,7 +37,7 @@ function App() {
   
   
   useEffect(() => {
-    fetch(`http://localhost:5000/skincare`)
+    fetch(`${baseUrl}/skincare`)
       .then((response) => response.json())
       .then((data) => {
         setSkinCareProducts(data);
@@ -53,7 +54,7 @@ function App() {
 
   const handleSearchSubmit = () => {
 
-    fetch(`http://localhost:5000/skinCare?keyword=${searchKeyword}`)
+    fetch(`${baseUrl}/skinCare?keyword=${searchKeyword}`)
     .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -64,7 +65,7 @@ function App() {
 
   const handleSearch = () => {
     
-    fetch(`http://localhost:5000/skincare/search?keyword=${searchKeyword}`)
+    fetch(`${baseUrl}/skincare/search?keyword=${searchKeyword}`)
       .then((response) => response.json())
       .then((data) => {
         setSearchResults(data);
